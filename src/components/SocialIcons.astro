@@ -44,7 +44,13 @@ const socialMedia = [
 {
   socialMedia.map(({ name, icon, url }) => (
     <a href={url} target="_blank">
-      <Image src={icon} alt={name} class="inline-block h-8 w-8" />
+      <Image
+        src={icon}
+        alt={name}
+        class="inline-block h-8 w-8"
+        decoding="sync"
+        loading="eager"
+      />
     </a>
   ))
 }
