@@ -1,0 +1,14 @@
+---
+interface Props {
+  [attribute: string]: any;
+}
+
+const { class: className, ...attributes } = Astro.props;
+---
+
+<p
+  class={`my-4 font-serif text-lg text-gray-700 ${className ?? ""}`}
+  {...attributes}
+>
+  <slot />
+</p>

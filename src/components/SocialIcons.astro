@@ -1,0 +1,50 @@
+---
+import githubIcon from "../assets/icons/github-icon.png";
+import linkedinIcon from "../assets/icons/linkedin-icon.svg";
+import twitterIcon from "../assets/icons/twitter-icon.png";
+import facebookIcon from "../assets/icons/facebook-icon.png";
+import instagramIcon from "../assets/icons/instagram-icon.png";
+import vscoIcon from "../assets/icons/vsco-icon.png";
+import { Image } from "astro:assets";
+
+const socialMedia = [
+  {
+    name: "GitHub",
+    icon: githubIcon,
+    url: "https://github.com/mikkelsvartveit",
+  },
+  {
+    name: "LinkedIn",
+    icon: linkedinIcon,
+    url: "https://linkedin.com/in/mikkelsvartveit",
+  },
+  {
+    name: "Twitter",
+    icon: twitterIcon,
+    url: "https://twitter.com/mikkelsvartveit",
+  },
+  {
+    name: "Facebook",
+    icon: facebookIcon,
+    url: "https://facebook.com/profile.php?id=100006609016880",
+  },
+  {
+    name: "Instagram",
+    icon: instagramIcon,
+    url: "https://instagram.com/mikkelsvartveit",
+  },
+  {
+    name: "VSCO",
+    icon: vscoIcon,
+    url: "https://vsco.co/mikkelsvartveit",
+  },
+];
+---
+
+{
+  socialMedia.map(({ name, icon, url }) => (
+    <a href={url} target="_blank">
+      <Image src={icon} alt={name} class="inline-block h-8 w-8" />
+    </a>
+  ))
+}

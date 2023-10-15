@@ -1,9 +1,61 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import RootLayout from "../layouts/RootLayout.astro";
+import Link from "../components/Link.astro";
+import Paragraph from "../components/Paragraph.astro";
+import SocialIcons from "../components/SocialIcons.astro";
+
+import portraitImage from "../assets/images/portrait.jpg";
 ---
 
-<Layout title="Mikkel Svartveit">
-  <main>
-    <h1>Hello World!</h1>
-  </main>
-</Layout>
+<RootLayout title="Mikkel Svartveit">
+  <div
+    class="mx-auto flex max-w-5xl flex-col-reverse px-3 pb-8 pt-12 sm:px-6 md:flex-row"
+  >
+    <section class="w-full md:w-1/2">
+      <h1
+        class="mb-8 font-serif text-3xl font-light tracking-wide text-gray-600 sm:text-4xl"
+      >
+        Hi, I'm Mikkel 👋
+      </h1>
+
+      <Paragraph>
+        I am a Computer Science student from Norway and this is my playground.
+        Thanks for stopping by!
+      </Paragraph>
+
+      <Paragraph>
+        Here you will find some
+        <Link href="/programming">programming projects</Link>, and a small
+        <Link href="/photography">collection of photos</Link>
+         I'm proud of.
+      </Paragraph>
+
+      <Paragraph>
+        Want to get in touch?
+        <Link href="mailto:hi@mikkelsvartveit.com">Contact me.</Link>
+      </Paragraph>
+
+      <div class="mt-8 space-x-3">
+        <SocialIcons />
+      </div>
+    </section>
+
+    <figure class="px-4 md:w-1/2">
+      <Image
+        class="mx-auto mb-12 block w-full max-w-sm rounded-full border-4 border-white bg-gray-100 text-transparent shadow-lg shadow-gray-400 md:mx-0 md:ml-auto md:w-5/6"
+        src={portraitImage}
+        alt="Portrait of Mikkel"
+      />
+    </figure>
+  </div>
+
+  <footer class="mb-12 mt-4 flex justify-center">
+    <p class="text-xs text-gray-400">
+      Built with
+      <Link href="https://astro.build/" target="_blank">Astro</Link>
+       and
+      <Link href="https://tailwindcss.com/" target="_blank">Tailwind CSS</Link>.
+    </p>
+  </footer>
+</RootLayout>
