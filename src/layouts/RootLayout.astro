@@ -12,7 +12,7 @@ const fullTitle = `${title} – Mikkel Svartveit`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:animate="fade">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.png" />
@@ -22,14 +22,17 @@ const fullTitle = `${title} – Mikkel Svartveit`;
       name="description"
       content="Hi, I'm Mikkel! I am a Computer Science student from Norway and this is my playground. Here you will find some programming projects, and a small collection of photos I'm proud of."
     />
-    <ViewTransitions />
+    <ViewTransitions fallback="swap" />
   </head>
+
   <body class="overflow-y-scroll bg-gray-50">
     <Navbar client:load currentPath={Astro.url.pathname} />
     <main>
       <slot />
     </main>
-  </body><style>
-    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Source+Serif+Pro:wght@300;400;600&display=swap");
-  </style>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Source+Serif+Pro:wght@300;400;600&display=swap");
+    </style>
+  </body>
 </html>
