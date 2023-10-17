@@ -1,10 +1,14 @@
 ---
-import Navbar from "../components/Navbar.svelte";
+import { ViewTransitions } from "astro:transitions";
+import Navbar from "@components/Navbar.svelte";
+
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+
+const fullTitle = `${title} – Mikkel Svartveit`;
 ---
 
 <!doctype html>
@@ -13,20 +17,19 @@ const { title } = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
+    <title>{fullTitle}</title>
     <meta
       name="description"
       content="Hi, I'm Mikkel! I am a Computer Science student from Norway and this is my playground. Here you will find some programming projects, and a small collection of photos I'm proud of."
     />
+    <ViewTransitions />
   </head>
   <body class="overflow-y-scroll bg-gray-50">
     <Navbar client:load currentPath={Astro.url.pathname} />
     <main>
       <slot />
     </main>
-  </body>
+  </body><style>
+    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Source+Serif+Pro:wght@300;400;600&display=swap");
+  </style>
 </html>
-
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Source+Serif+Pro:wght@300;400;600&display=swap");
-</style>
