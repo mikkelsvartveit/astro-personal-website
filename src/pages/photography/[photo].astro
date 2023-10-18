@@ -20,7 +20,7 @@ export const getStaticPaths = (async () => {
 const { photo } = Astro.props;
 ---
 
-<RootLayout title="Photo">
+<RootLayout title="Photo" hideScrollbar>
   <div class="bg-gray-900 m-screen h-screen" onclick="
   history.back()
   ">

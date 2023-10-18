@@ -3,9 +3,10 @@ import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title?: string;
+  hideScrollbar?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, hideScrollbar } = Astro.props;
 
 const fullTitle = `${title && title + " – "}Mikkel Svartveit`;
 ---
@@ -24,7 +25,7 @@ const fullTitle = `${title && title + " – "}Mikkel Svartveit`;
     <ViewTransitions fallback="swap" />
   </head>
 
-  <body class="bg-gray-50 overflow-y-scroll">
+  <body class={`bg-gray-50 ${hideScrollbar ? "" : "overflow-y-scroll"}`}>
     <slot />
   </body>
 </html>
