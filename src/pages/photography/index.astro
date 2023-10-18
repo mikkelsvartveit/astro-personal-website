@@ -1,0 +1,60 @@
+---
+import Paragraph from "@components/Paragraph.astro";
+import ContainerLayout from "@layouts/ContainerLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TextContentLayout from "@layouts/TextContentLayout.astro";
+import { Image } from "astro:assets";
+
+const photos = await Astro.glob("../../assets/photos/*");
+
+const sortFiles = (a: any, b: any) => {
+  const aNum = Number(a.default.src.match(/\d+/));
+  const bNum = Number(b.default.src.match(/\d+/));
+
+  return bNum - aNum;
+};
+
+export const getFileNameFromPath = (path: string) => {
+  const parts = path.split("/");
+  return parts[parts.length - 1].split("?")[0];
+};
+---
+
+<BaseLayout title="Photography">
+  <ContainerLayout>
+    <TextContentLayout>
+      <h1
+        class="mb-8 text-center font-serif text-3xl font-light tracking-wide text-gray-600 sm:text-4xl"
+      >
+        Photography
+      </h1>
+
+      <Paragraph>
+        I enjoy taking photos and I always bring my camera with me when I
+        travel. I used to shoot with a Nikon DSLR, but recently switched to a
+        Fujifilm X-T20, which I find a lot more enjoyable to bring around. These
+        are some of my favorite shots from over the years.
+      </Paragraph>
+    </TextContentLayout>
+  </ContainerLayout>
+
+  <section class="px-4 mb-2 columns-2 gap-4 md:columns-3 lg:columns-4">
+    {
+      photos.sort(sortFiles).map((photo) => (
+        <a
+          href={`/photography/${getFileNameFromPath(photo.default.src)}`}
+          class="flex w-full py-2 duration-100 hover:-translate-y-1"
+        >
+          <Image
+            src={photo.default}
+            alt=""
+            width={400}
+            densities={[1, 2]}
+            transition:name={getFileNameFromPath(photo.default.src)}
+            class="rounded bg-gray-200"
+          />
+        </a>
+      ))
+    }
+  </section>
+</BaseLayout>

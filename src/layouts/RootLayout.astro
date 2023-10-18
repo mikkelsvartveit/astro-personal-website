@@ -1,14 +1,13 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import Navbar from "@components/Navbar.svelte";
 
 interface Props {
-  title: string;
+  title?: string;
 }
 
 const { title } = Astro.props;
 
-const fullTitle = `${title} – Mikkel Svartveit`;
+const fullTitle = `${title && title + " – "}Mikkel Svartveit`;
 ---
 
 <!doctype html>
@@ -25,14 +24,7 @@ const fullTitle = `${title} – Mikkel Svartveit`;
     <ViewTransitions fallback="swap" />
   </head>
 
-  <body class="overflow-y-scroll bg-gray-50">
-    <Navbar client:load currentPath={Astro.url.pathname} />
-    <main>
-      <slot />
-    </main>
-
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Source+Serif+Pro:wght@300;400;600&display=swap");
-    </style>
+  <body class="bg-gray-50 overflow-y-scroll">
+    <slot />
   </body>
 </html>

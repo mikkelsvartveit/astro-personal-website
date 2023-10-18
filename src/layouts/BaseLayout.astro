@@ -1,0 +1,21 @@
+---
+import Navbar from "@components/Navbar.svelte";
+import RootLayout from "./RootLayout.astro";
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<RootLayout {title}>
+  <Navbar client:load currentPath={Astro.url.pathname} />
+  <main>
+    <slot />
+  </main>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Source+Serif+Pro:wght@300;400;600&display=swap");
+  </style>
+</RootLayout>

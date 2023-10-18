@@ -1,6 +1,6 @@
 ---
 import ContainerLayout from "@layouts/ContainerLayout.astro";
-import RootLayout from "@layouts/RootLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
@@ -20,7 +20,7 @@ const { Content } = await project.render();
 const { title, date, technologies, website, repository } = project.data;
 ---
 
-<RootLayout {title}>
+<BaseLayout {title}>
   <ContainerLayout>
     <TextContentLayout>
       <h1
@@ -80,4 +80,4 @@ const { title, date, technologies, website, repository } = project.data;
       </div>
     </TextContentLayout>
   </ContainerLayout>
-</RootLayout>
+</BaseLayout>

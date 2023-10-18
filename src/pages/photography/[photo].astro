@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getFileNameFromPath } from "./index.astro";
+import { Image } from "astro:assets";
+import RootLayout from "@layouts/RootLayout.astro";
+
+export const getStaticPaths = (async () => {
+  const photos = await Astro.glob("../../assets/photos/*");
+
+  return photos.map((photo: any) => ({
+    params: {
+      photo: getFileNameFromPath(photo.default.src),
+    },
+    props: {
+      photo,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { photo } = Astro.props;
+---
+
+<RootLayout title="Photo">
+  <div class="bg-gray-900 m-screen h-screen" onclick="
+  history.back()
+  ">
+    <Image
+      src={photo.default}
+      alt=""
+      height={1000}
+      densities={[1, 2]}
+      class="h-screen w-screen object-contain"
+      loading="eager"
+      decoding="sync"
+    />
+  </div>
+</RootLayout>

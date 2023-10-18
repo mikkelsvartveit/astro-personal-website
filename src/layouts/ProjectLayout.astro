@@ -1,6 +1,6 @@
 ---
 import ContainerLayout from "./ContainerLayout.astro";
-import RootLayout from "./RootLayout.astro";
+import BaseLayout from "./BaseLayout.astro";
 import TextContentLayout from "./TextContentLayout.astro";
 import type { MarkdownLayoutProps } from "astro";
 
@@ -18,7 +18,7 @@ const { title, website, repository, technologies, date } =
   Astro.props.frontmatter;
 ---
 
-<RootLayout {title}>
+<BaseLayout {title}>
   <ContainerLayout>
     <TextContentLayout>
       <h1
@@ -80,4 +80,4 @@ const { title, website, repository, technologies, date } =
       </div>
     </TextContentLayout>
   </ContainerLayout>
-</RootLayout>
+</BaseLayout>
