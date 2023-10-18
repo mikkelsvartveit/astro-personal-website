@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  photo: any;
+  class?: string;
+}
+
+const { photo, class: className } = Astro.props;
+---
+
+<Image
+  src={photo}
+  alt=""
+  height={1000}
+  densities={[1, 2]}
+  quality="mid"
+  class={"object-contain rounded " + (className ?? "")}
+  transition:name={photo.src}
+/>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { slide, fade } from "svelte/transition";
 
+  export let sticky = true;
   export let currentPath: string;
   $: currentPathTrimmed = currentPath.replace(/\/+$/, "");
 
@@ -19,8 +20,8 @@
 <svelte:window bind:scrollY={scrollPosition} />
 
 <header
-  class="sticky top-0 z-10 bg-gray-50 transition-shadow ease-in"
-  class:shadow={isScrolled}
+  class={sticky ? "sticky top-0 z-10 bg-gray-50 transition-shadow ease-in" : ""}
+  class:shadow={sticky && isScrolled}
 >
   <nav
     class="mx-auto flex h-16 max-w-5xl flex-wrap items-center justify-between px-6"

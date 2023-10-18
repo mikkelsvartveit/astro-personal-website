@@ -1,8 +1,8 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getFileNameFromPath } from "./index.astro";
-import { Image } from "astro:assets";
 import RootLayout from "@layouts/RootLayout.astro";
+import Photo from "@components/Photo.astro";
 
 export const getStaticPaths = (async () => {
   const photos = await Astro.glob("../../assets/photos/*");
@@ -21,17 +21,12 @@ const { photo } = Astro.props;
 ---
 
 <RootLayout title="Photo" hideScrollbar>
-  <div class="bg-gray-900 m-screen h-screen" onclick="
-  history.back()
-  ">
-    <Image
-      src={photo.default}
-      alt=""
-      height={1000}
-      densities={[1, 2]}
-      class="h-screen w-screen object-contain"
-      loading="eager"
-      decoding="sync"
-    />
+  <div
+    class="cursor-pointer bg-gray-900 w-full h-screen flex justify-center"
+    onclick="
+    history.back()
+    "
+  >
+    <Photo photo={photo.default} class="w-auto" />
   </div>
 </RootLayout>
