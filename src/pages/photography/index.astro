@@ -17,8 +17,7 @@ const sortFiles = (a: any, b: any) => {
 export const getFileNameFromPath = (path: string) => {
   const parts = path.split("/");
   const fileName = parts[parts.length - 1].split("?")[0];
-  const fileNameParts = fileName.split(".");
-  return fileNameParts[0] + "." + fileNameParts[fileNameParts.length - 1];
+  return fileName.split(".")[0];
 };
 ---
 

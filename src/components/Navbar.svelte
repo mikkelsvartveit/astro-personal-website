@@ -2,6 +2,7 @@
   import { slide, fade } from "svelte/transition";
 
   export let currentPath: string;
+  $: currentPathTrimmed = currentPath.replace(/\/+$/, "");
 
   let scrollPosition = 0;
   $: isScrolled = scrollPosition > 0;
@@ -28,7 +29,7 @@
       href="/"
       data-sveltekit-preload-code="eager"
       class="text-lg tracking-wide text-gray-600 decoration-yellow-400 decoration-2 underline-offset-8 duration-100 hover:text-gray-400"
-      class:underline={"/" === currentPath}
+      class:underline={"" === currentPathTrimmed}
     >
       Mikkel Svartveit
     </a>
@@ -40,7 +41,7 @@
             {href}
             data-sveltekit-preload-code="eager"
             class="text-lg tracking-wide text-gray-600 decoration-yellow-400 decoration-2 underline-offset-8 duration-100 hover:text-gray-400"
-            class:underline={href === currentPath}
+            class:underline={href === currentPathTrimmed}
           >
             {name}
           </a>
@@ -107,7 +108,7 @@
           {href}
           on:click={() => (collapsed = true)}
           class="whitespace-nowrap text-lg tracking-wide text-gray-600 decoration-yellow-400 decoration-2 underline-offset-8"
-          class:underline={href === currentPath}
+          class:underline={href === currentPathTrimmed}
         >
           {name}
         </a>
