@@ -8,7 +8,7 @@ interface Props {
 
 const { title, hideScrollbar } = Astro.props;
 
-const fullTitle = `${title && title + " – "}Mikkel Svartveit`;
+const fullTitle = `${title ? title + " – " : ""}Mikkel Svartveit`;
 ---
 
 <!doctype html>
