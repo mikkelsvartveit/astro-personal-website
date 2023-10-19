@@ -3,16 +3,19 @@ import { Image } from "astro:assets";
 
 interface Props {
   photo: any;
+  width?: number;
+  height?: number;
   class?: string;
 }
 
-const { photo, class: className } = Astro.props;
+const { photo, width, height, class: className } = Astro.props;
 ---
 
 <Image
   src={photo}
   alt=""
-  height={1000}
+  {width}
+  {height}
   densities={[1, 2]}
   quality="mid"
   class={"object-contain rounded " + (className ?? "")}
