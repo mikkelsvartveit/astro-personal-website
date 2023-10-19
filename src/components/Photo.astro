@@ -16,5 +16,7 @@ const { photo, class: className } = Astro.props;
   densities={[1, 2]}
   quality="mid"
   class={"object-contain rounded " + (className ?? "")}
+  decoding="sync"
+  loading="eager"
   transition:name={photo.src}
 />
