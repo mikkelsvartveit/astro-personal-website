@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import Paragraph from "@components/Paragraph.astro";
+import ContainerLayout from "@layouts/ContainerLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TextContentLayout from "@layouts/TextContentLayout.astro";
+import { getCollection } from "astro:content";
+
+const articles = await getCollection("blog");
+---
+
+<BaseLayout title="Programming">
+  <ContainerLayout>
+    <TextContentLayout>
+      <h1
+        class="mb-8 text-center font-serif text-3xl font-light tracking-wide text-gray-600 sm:text-4xl"
+      >
+        Articles
+      </h1>
+
+      <Paragraph>
+        Sometimes I write about technology, programming, software, productivity
+        or other things that interests me.
+      </Paragraph>
+
+      <section class="sm:max-w-2xl">
+        {
+          articles
+            .sort((p2, p1) => p1.data.date.getTime() - p2.data.date.getTime())
+            .map(async (article) => {
+              const { slug, data } = article;
+              const { image, intro } = data;
+              const { headings } = await article.render();
+              const title = headings[0].text;
+              return (
+                <a
+                  href={`/articles/${slug}`}
+                  class="my-8 grid grid-cols-1 mx-auto max-w-xs sm:max-w-none sm:grid-cols-3 overflow-hidden rounded-lg bg-white shadow duration-100 hover:translate-x-1 hover:shadow-md"
+                >
+                  <Image
+                    src={image}
+                    alt={title}
+                    class="col-span-1 object-cover h-48 sm:h-full"
+                  />
+
+                  <div class="col-span-1 sm:col-span-2 p-4">
+                    <h2 class="mb-2 text-xl font-serif text-gray-700 line-clamp-2">
+                      {title}
+                    </h2>
+
+                    <p class="line-clamp-2 text-gray-500 font-serif">{intro}</p>
+                  </div>
+                </a>
+              );
+            })
+        }
+      </section>
+    </TextContentLayout>
+  </ContainerLayout>
+</BaseLayout>

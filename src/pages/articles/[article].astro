@@ -1,0 +1,43 @@
+---
+import ContainerLayout from "@layouts/ContainerLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TextContentLayout from "@layouts/TextContentLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const blogCollection = await getCollection("blog");
+  return blogCollection.map((entry) => ({
+    params: {
+      article: entry.slug,
+    },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const project = Astro.props.entry;
+const { Content } = await project.render();
+const { title, date } = project.data;
+---
+
+<BaseLayout {title}>
+  <ContainerLayout>
+    <TextContentLayout>
+      <p class="mx-auto mb-4 text-gray-500">
+        {
+          new Date(date).toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })
+        }
+      </p>
+
+      <div
+        class="prose prose-lg max-w-none font-serif prose-headings:text-gray-600 prose-h1:font-light prose-h1:leading-snug prose-h1:underline prose-h1:decoration-yellow-400 prose-h1:decoration-2 prose-h1:underline-offset-8 prose-h2:font-light prose-p:text-gray-700 prose-a:text-teal-600 prose-a:no-underline prose-a:duration-100 hover:prose-a:text-teal-500 hover:prose-a:underline prose-strong:text-gray-700 before:prose-code:content-[''] after:prose-code:content-['']"
+      >
+        <Content />
+      </div>
+    </TextContentLayout>
+  </ContainerLayout>
+</BaseLayout>
