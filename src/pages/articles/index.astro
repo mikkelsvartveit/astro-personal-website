@@ -19,8 +19,8 @@ const articles = await getCollection("blog");
       </h1>
 
       <Paragraph>
-        Sometimes I write about technology, programming, software, productivity
-        or other things that interests me.
+        Sometimes I write about technology, programming, software, or other
+        things that interests me.
       </Paragraph>
 
       <section class="sm:max-w-2xl">
@@ -35,7 +35,7 @@ const articles = await getCollection("blog");
               return (
                 <a
                   href={`/articles/${slug}`}
-                  class="my-8 grid grid-cols-1 mx-auto max-w-xs sm:max-w-none sm:grid-cols-3 overflow-hidden rounded-lg bg-white shadow duration-100 hover:translate-x-1 hover:shadow-md"
+                  class="my-8 grid grid-cols-1 mx-auto max-w-xs sm:max-w-none sm:grid-cols-3 overflow-hidden rounded-lg bg-white shadow duration-100 hover:translate-x-1 hover:shadow-md group"
                 >
                   <Image
                     src={image}
@@ -43,12 +43,12 @@ const articles = await getCollection("blog");
                     class="col-span-1 object-cover h-48 sm:h-full"
                   />
 
-                  <div class="col-span-1 sm:col-span-2 p-4">
-                    <h2 class="mb-2 text-xl font-serif text-gray-700 line-clamp-2">
+                  <div class="col-span-1 sm:col-span-2 px-4 py-5">
+                    <h2 class="mb-2 text-xl font-serif text-gray-700 sm:line-clamp-1 group-hover:underline underline-offset-4">
                       {title}
                     </h2>
 
-                    <p class="line-clamp-2 text-gray-500 font-serif">{intro}</p>
+                    <p class="sm:line-clamp-3 text-gray-500">{intro}</p>
                   </div>
                 </a>
               );

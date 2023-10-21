@@ -63,17 +63,16 @@ const latestArticleImage = latestArticle.data.image;
     </figure>
   </div>
 
+  <h2 class="text-center text-lg mb-3 text-gray-500">Latest article</h2>
   <a
     href={`/articles/${latestArticleSlug}`}
     class="mx-auto block max-w-lg px-3 sm:px-6 text-gray-600"
   >
-    <h2 class="text-center text-lg mb-3 text-gray-500">Latest article</h2>
-
     <div
-      class="flex bg-white shadow transition hover:-translate-y-0.5 hover:shadow-md rounded-lg overflow-hidden items-center"
+      class="flex bg-white shadow transition hover:shadow-md hover:underline underline-offset-4 rounded-lg overflow-hidden items-center"
     >
-      <Image src={latestArticleImage} alt="" class="w-32 h-20" />
-      <h3 class="text-lg font-serif mx-3 line-clamp-2">{latestArticleTitle}</h3>
+      <Image src={latestArticleImage} alt="" class="w-24 h-16 object-cover" />
+      <h3 class="text-lg font-serif mx-3 line-clamp-2 leading-snug">{latestArticleTitle}</h3>
     </div>
   </a>
 
