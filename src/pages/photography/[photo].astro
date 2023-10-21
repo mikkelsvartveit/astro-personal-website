@@ -1,5 +1,6 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
 import { getFileNameFromPath } from "./index.astro";
 import RootLayout from "@layouts/RootLayout.astro";
 import Photo from "@components/Photo.astro";
@@ -27,6 +28,13 @@ const { photo } = Astro.props;
     history.back()
     "
   >
-    <Photo photo={photo.default} height={1000} class="w-auto h-full" />
+    <Image
+      src={photo.default}
+      alt=""
+      height={2000}
+      quality="high"
+      class="object-contain rounded w-auto h-full"
+      transition:name={photo.default.src}
+    />
   </div>
 </RootLayout>

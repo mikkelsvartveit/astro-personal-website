@@ -4,7 +4,6 @@ import ContainerLayout from "@layouts/ContainerLayout.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
 import { Image } from "astro:assets";
-import Photo from "@components/Photo.astro";
 
 const photos = await Astro.glob("../../assets/photos/*");
 
@@ -48,7 +47,14 @@ export const getFileNameFromPath = (path: string) => {
           class="flex w-full py-2 duration-100 hover:-translate-y-1 rounded-lg"
         >
           <div class="bg-gray-200 rounded">
-            <Photo photo={photo.default} width={400} />
+            <Image
+              src={photo.default}
+              alt=""
+              width={1000}
+              quality="mid"
+              class="object-contain rounded"
+              transition:name={photo.default.src}
+            />
           </div>
         </a>
       ))
