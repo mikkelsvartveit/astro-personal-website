@@ -3,7 +3,6 @@ import type { GetStaticPaths } from "astro";
 import { Image } from "astro:assets";
 import { getFileNameFromPath } from "./index.astro";
 import RootLayout from "@layouts/RootLayout.astro";
-import Photo from "@components/Photo.astro";
 
 export const getStaticPaths = (async () => {
   const photos = await Astro.glob("../../assets/photos/*");
@@ -21,7 +20,7 @@ export const getStaticPaths = (async () => {
 const { photo } = Astro.props;
 ---
 
-<RootLayout title="Photo" hideScrollbar>
+<RootLayout title="Photo" hideScrollbar themeColor="#111827">
   <div
     class="cursor-pointer bg-gray-900 w-full h-screen flex justify-center"
     onclick="
