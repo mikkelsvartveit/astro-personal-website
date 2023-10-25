@@ -42,7 +42,7 @@ const latestArticleImage = latestArticle.data.image;
 
       <Paragraph>
         Want to get in touch?
-        <Link href="mailto:hi@mikkelsvartveit.com">Contact me.</Link>
+        <Link href="mailto:hi@mikkelsvartveit.com">Contact me</Link>.
       </Paragraph>
 
       <div class="mt-8 space-x-3">
@@ -72,37 +72,26 @@ const latestArticleImage = latestArticle.data.image;
       class="flex bg-white shadow transition hover:shadow-md hover:underline underline-offset-4 rounded-lg overflow-hidden items-center"
     >
       <Image src={latestArticleImage} alt="" class="w-24 h-16 object-cover" />
-      <h3 class="text-lg font-serif mx-3 line-clamp-2 leading-snug">{latestArticleTitle}</h3>
+      <h3 class="text-lg font-serif mx-3 line-clamp-2 leading-snug">
+        {latestArticleTitle}
+      </h3>
     </div>
   </a>
 
   <footer class="mb-8 mt-20 flex justify-center w-full">
-    <p class="text-xs text-gray-400">
+    <p class="text-xs text-gray-500">
       Built with
-      <Link href="https://astro.build/" target="_blank">Astro</Link>
+      <a
+        class="underline underline-offset-1 hover:text-gray-400"
+        href="https://astro.build/"
+        target="_blank">Astro</a
+      >
        and
-      <Link href="https://tailwindcss.com/" target="_blank">Tailwind CSS</Link>.
+      <a
+        class="underline underline-offset-1 hover:text-gray-400"
+        href="https://tailwindcss.com/"
+        target="_blank">Tailwind CSS</a
+      >.
     </p>
   </footer>
 </BaseLayout>
-
-<!-- <style> -->
-<!--   .footer-fixed { -->
-<!--     position: fixed; -->
-<!--     bottom: 0; -->
-<!--   } -->
-<!-- </style> -->
-<!---->
-<!-- <script> -->
-<!--   window.addEventListener("DOMContentLoaded", checkFooterPosition); -->
-<!--   window.addEventListener("resize", checkFooterPosition); -->
-<!---->
-<!--   function checkFooterPosition() { -->
-<!--     const footer = document.querySelector("footer"); -->
-<!--     if (document.body.clientHeight <= window.innerHeight) { -->
-<!--       footer?.classList.add("footer-fixed"); -->
-<!--     } else { -->
-<!--       footer?.classList.remove("footer-fixed"); -->
-<!--     } -->
-<!--   } -->
-<!-- </script> -->
