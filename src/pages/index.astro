@@ -18,9 +18,9 @@ const latestArticleImage = latestArticle.data.image;
 
 <BaseLayout>
   <div
-    class="mx-auto flex max-w-5xl flex-col-reverse px-3 pb-6 pt-8 sm:px-6 md:flex-row items-stretch"
+    class="mx-auto flex max-w-5xl flex-col-reverse items-stretch px-3 pb-6 pt-8 sm:px-6 md:flex-row"
   >
-    <section class="w-full md:w-3/5 mb-10 mt-4">
+    <section class="mb-10 mt-4 w-full md:w-3/5">
       <h1
         class="mb-8 font-serif text-3xl font-light tracking-wide text-gray-600 sm:text-4xl"
       >
@@ -50,7 +50,7 @@ const latestArticleImage = latestArticle.data.image;
       </div>
     </section>
 
-    <figure class="px-4 md:w-1/2 my-auto">
+    <figure class="my-auto px-4 md:w-1/2">
       <Image
         class="mx-auto mb-12 block w-full max-w-sm rounded-full border-4 border-white bg-gray-100 text-transparent shadow-lg shadow-gray-400 md:mx-0 md:ml-auto md:w-5/6"
         src={portraitImage}
@@ -63,22 +63,22 @@ const latestArticleImage = latestArticle.data.image;
     </figure>
   </div>
 
-  <h2 class="text-center text-lg mb-3 text-gray-500">Latest article</h2>
+  <h2 class="mb-3 text-center text-lg text-gray-500">Latest article</h2>
   <a
     href={`/articles/${latestArticleSlug}`}
-    class="mx-auto block max-w-lg px-3 sm:px-6 text-gray-600"
+    class="mx-auto block max-w-lg px-3 text-gray-600 sm:px-6"
   >
     <div
-      class="flex bg-white shadow transition hover:shadow-md hover:underline underline-offset-4 rounded-lg overflow-hidden items-center"
+      class="flex items-center overflow-hidden rounded-lg bg-white underline-offset-4 shadow transition hover:underline hover:shadow-md"
     >
-      <Image src={latestArticleImage} alt="" class="w-24 h-16 object-cover" />
-      <h3 class="text-lg font-serif mx-3 line-clamp-2 leading-snug">
+      <Image src={latestArticleImage} alt="" class="h-16 w-24 object-cover" />
+      <h3 class="mx-3 line-clamp-2 font-serif text-lg leading-snug">
         {latestArticleTitle}
       </h3>
     </div>
   </a>
 
-  <footer class="mb-8 mt-20 flex justify-center w-full">
+  <footer class="mb-8 mt-20 flex w-full justify-center">
     <p class="text-xs text-gray-500">
       Built with
       <a

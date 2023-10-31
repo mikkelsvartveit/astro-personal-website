@@ -35,20 +35,20 @@ const articles = await getCollection("blog");
               return (
                 <a
                   href={`/articles/${slug}`}
-                  class="my-8 grid grid-cols-1 mx-auto max-w-xs sm:max-w-none sm:grid-cols-3 overflow-hidden rounded-lg bg-white shadow duration-100 hover:translate-x-1 hover:shadow-md group"
+                  class="group mx-auto my-8 grid max-w-xs grid-cols-1 overflow-hidden rounded-lg bg-white shadow duration-100 hover:translate-x-1 hover:shadow-md sm:max-w-none sm:grid-cols-3"
                 >
                   <Image
                     src={image}
                     alt={title}
-                    class="col-span-1 object-cover h-48 sm:h-full"
+                    class="col-span-1 h-48 object-cover sm:h-full"
                   />
 
-                  <div class="col-span-1 sm:col-span-2 px-4 py-5">
-                    <h2 class="mb-2 text-xl font-serif text-gray-700 sm:line-clamp-1 group-hover:underline underline-offset-4">
+                  <div class="col-span-1 px-4 py-5 sm:col-span-2">
+                    <h2 class="mb-2 font-serif text-xl text-gray-700 underline-offset-4 group-hover:underline sm:line-clamp-1">
                       {title}
                     </h2>
 
-                    <p class="sm:line-clamp-3 text-gray-500">{intro}</p>
+                    <p class="text-gray-500 sm:line-clamp-3">{intro}</p>
                   </div>
                 </a>
               );
