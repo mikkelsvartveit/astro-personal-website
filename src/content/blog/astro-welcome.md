@@ -1,7 +1,7 @@
 ---
 intro: "How I built this website, why I picked the Astro framework, and the reason Tailwind is the best way to write CSS in 2023!"
 image: "@assets/images/rocket.png"
-date: 2023-10-20
+date: 2023-10-30
 ---
 
 # Welcome to My New Personal Website!
@@ -50,5 +50,19 @@ I decided to actually give Tailwind a try, and now I would honestly call Tailwin
 - There is no need to come up with HTML classes yourself anymore. This is a surprisingly delightful feature. Coming up with good class names selectors is hard, especially on a project where you collaborate with people that might have a different coding style than you. And all those hours wasted figuring out which CSS selectors gets the highest priority? Tailwind solves it. Your Tailwind classes determine how your element is styled, and there’s no need to think about anything more than that.
 - It reduces decision fatigue. As an overly perfectionist developer, I used to find myself making micro-adjustments to my styles that no one but myself would ever notice. I would frequently think “this color should probably be 2% darker”, or “this `div` for sure deserves one more pixel of bottom padding”. Tailwind mitigates this by providing a perfectly balanced style system, where the possible values are spaced apart in a way that limits your choices _just_ enough to reduce overthinking, while giving you the granularity you need.
 - Speaking of colors: instead of spending hours in a color picker trying to find the perfect hex value, Tailwind provides 22 base colors with 10 shades for each of them referenced in the format of `blue-400` and `amber-800`. This makes it super easy to keep a consistent color scheme but use different shades for stuff like hover effects. This color selection is so nice that in project where I don’t have Tailwind, I actually [reference the Tailwind colors from their docs](https://tailwindcss.com/docs/customizing-colors).
-- Each style is tightly coupled to a single element. This is great for a couple of reasons. First, if you decide to delete some HTML or JSX code down the line, you can be sure that the styling gets deleted with it. A lot of large projects have leftovers in the CSS filel because the developers didn’t realize that style is not in use anymore. On the flip side, you never have to worry about breaking something else when changing a style in Tailwind, because the style is only in use for that one element in the first place.
+- Each style is tightly coupled to a single element. This is great for a couple of reasons. First, if you decide to delete some HTML or JSX code down the line, you can be sure that the styling gets deleted with it. A lot of large projects have leftovers in the CSS file because the developers didn’t realize that style is not in use anymore. On the flip side, you never have to worry about breaking something else when changing a style in Tailwind, because the style is only in use for that one element in the first place.
 - And, like my coworker suggested, building websites with Tailwind is _so_ fast. Not having to constantly context switch between HTML and CSS files is a relief I didn’t realize I needed.
+
+However, my favorite feature of Tailwind is what it is not: a component library. Contrary to many developers I know, I actually like CSS and the flexibility it gives me, and for this reason I am not usually a fan of component libraries. These tend to lock the developer into pre-established styles, and once you try to move outside these constraints, things start to feel hacky really fast. Tailwind, though, is not a component library. It is CSS, just packaged in a better way. Yes, the HTML gets ugly (and that is probably the strongest criticism I have against Tailwind), but this is a tradeoff I’m very willing to make at this point.
+
+## Cloudflare Pages
+
+The final piece of the puzzle is my hosting platform, Cloudflare Pages. Their free tier is unbelievably good. For $0, they give you unlimited sites, unlimited requests (including commercial use!), unlimited bandwidth, 500 builds per month, and automatic deployments every time you push to any branch in your GitHub repository.
+
+In contrast to GitHub Pages, Cloudflare’s edge runtime (called Workers) allow you to easily enable server-side rendering features for frameworks like Next.js, Remix, SvelteKit, and Astro. I don’t use SSR for this site (it is statically rendered at build time), but I am for [Snipcast.io](https://snipcast.io). This is a SvelteKit app with some static routes, some server-rendered routes, and a bunch of API endpoints with JWT authentication and everything. Cloudflare Pages handles it all really well and was dead easy to set up.
+
+Oh, and it’s also straightforward to connect your custom domain. You can even buy a domain through Cloudflare (which, by the way, has the cheapest prices of any registrar), in which case they care of all the DNS stuff for you when you add it to your Pages project.
+
+## Conclusion
+
+I’m very happy with my choice of tools for this site. Astro, Svelte, Tailwind, and Cloudflare Pages give me complexity when I want, but gets out of my way when I don’t. I get the feeling that with this current setup, I can build pretty much whatever I want, scale it to almost any amount of traffic, while still being able to quickly iterate and add new content. Let’s cross our fingers that the site lasts for at least a few months before a new Javascript framework launches and I get tempted to rewrite again :D
