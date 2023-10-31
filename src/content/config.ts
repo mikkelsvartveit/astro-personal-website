@@ -14,6 +14,17 @@ const programmingCollection = defineCollection({
     }),
 });
 
+const blogCollection = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      image: image(),
+      intro: z.string(),
+      date: z.date(),
+    }),
+});
+
 export const collections = {
   programming: programmingCollection,
+  blog: blogCollection,
 };

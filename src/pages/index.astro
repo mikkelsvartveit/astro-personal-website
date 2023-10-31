@@ -1,18 +1,26 @@
 ---
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Link from "@components/Link.astro";
 import Paragraph from "@components/Paragraph.astro";
 import SocialIcons from "@components/SocialIcons.astro";
-
 import portraitImage from "@assets/images/portrait.jpg";
+
+const articles = await getCollection("blog");
+const latestArticle = articles.sort(
+  (p2, p1) => p1.data.date.getTime() - p2.data.date.getTime(),
+)[0];
+const latestArticleSlug = latestArticle.slug;
+const latestArticleTitle = (await latestArticle.render()).headings[0].text;
+const latestArticleImage = latestArticle.data.image;
 ---
 
 <BaseLayout>
   <div
-    class="mx-auto flex max-w-5xl flex-col-reverse px-3 pb-8 pt-12 sm:px-6 md:flex-row"
+    class="mx-auto flex max-w-5xl flex-col-reverse px-3 pb-6 pt-8 sm:px-6 md:flex-row items-stretch"
   >
-    <section class="w-full md:w-1/2">
+    <section class="w-full md:w-3/5 mb-10 mt-4">
       <h1
         class="mb-8 font-serif text-3xl font-light tracking-wide text-gray-600 sm:text-4xl"
       >
@@ -26,14 +34,15 @@ import portraitImage from "@assets/images/portrait.jpg";
 
       <Paragraph>
         Here you will find some
-        <Link href="/programming">programming projects</Link>, and a small
+        <Link href="/programming">programming projects</Link>, a small
         <Link href="/photography">collection of photos</Link>
-         I'm proud of.
+         I'm proud of, and even a few
+        <Link href="/articles">articles I've written</Link>.
       </Paragraph>
 
       <Paragraph>
         Want to get in touch?
-        <Link href="mailto:hi@mikkelsvartveit.com">Contact me.</Link>
+        <Link href="mailto:hi@mikkelsvartveit.com">Contact me</Link>.
       </Paragraph>
 
       <div class="mt-8 space-x-3">
@@ -41,7 +50,7 @@ import portraitImage from "@assets/images/portrait.jpg";
       </div>
     </section>
 
-    <figure class="px-4 md:w-1/2">
+    <figure class="px-4 md:w-1/2 my-auto">
       <Image
         class="mx-auto mb-12 block w-full max-w-sm rounded-full border-4 border-white bg-gray-100 text-transparent shadow-lg shadow-gray-400 md:mx-0 md:ml-auto md:w-5/6"
         src={portraitImage}
@@ -54,12 +63,35 @@ import portraitImage from "@assets/images/portrait.jpg";
     </figure>
   </div>
 
-  <footer class="mb-12 mt-4 flex justify-center">
-    <p class="text-xs text-gray-400">
+  <h2 class="text-center text-lg mb-3 text-gray-500">Latest article</h2>
+  <a
+    href={`/articles/${latestArticleSlug}`}
+    class="mx-auto block max-w-lg px-3 sm:px-6 text-gray-600"
+  >
+    <div
+      class="flex bg-white shadow transition hover:shadow-md hover:underline underline-offset-4 rounded-lg overflow-hidden items-center"
+    >
+      <Image src={latestArticleImage} alt="" class="w-24 h-16 object-cover" />
+      <h3 class="text-lg font-serif mx-3 line-clamp-2 leading-snug">
+        {latestArticleTitle}
+      </h3>
+    </div>
+  </a>
+
+  <footer class="mb-8 mt-20 flex justify-center w-full">
+    <p class="text-xs text-gray-500">
       Built with
-      <Link href="https://astro.build/" target="_blank">Astro</Link>
+      <a
+        class="underline underline-offset-1 hover:text-gray-400"
+        href="https://astro.build/"
+        target="_blank">Astro</a
+      >
        and
-      <Link href="https://tailwindcss.com/" target="_blank">Tailwind CSS</Link>.
+      <a
+        class="underline underline-offset-1 hover:text-gray-400"
+        href="https://tailwindcss.com/"
+        target="_blank">Tailwind CSS</a
+      >.
     </p>
   </footer>
 </BaseLayout>

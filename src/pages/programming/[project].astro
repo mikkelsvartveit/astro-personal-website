@@ -4,6 +4,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
+import ProseLayout from "@layouts/ProseLayout.astro";
 
 export const getStaticPaths = (async () => {
   const programmingEntries = await getCollection("programming");
@@ -73,11 +74,10 @@ const { title, date, technologies, website, repository } = project.data;
           )
         }
       </div>
-      <div
-        class="prose prose-lg max-w-none font-serif prose-headings:text-gray-600 prose-h2:font-light prose-a:text-teal-600 prose-a:no-underline prose-a:duration-100 hover:prose-a:text-teal-500 hover:prose-a:underline before:prose-code:content-[''] after:prose-code:content-['']"
-      >
+
+      <ProseLayout>
         <Content />
-      </div>
+      </ProseLayout>
     </TextContentLayout>
   </ContainerLayout>
 </BaseLayout>

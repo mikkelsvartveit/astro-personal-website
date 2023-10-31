@@ -7,7 +7,7 @@ export default {
     fontFamily: {
       sans: ["'Nunito'", ...defaultTheme.fontFamily.sans],
       serif: ["'Source Serif Pro'", ...defaultTheme.fontFamily.serif],
-      mono: [...defaultTheme.fontFamily.mono],
+      mono: ["'Source Code Pro'", ...defaultTheme.fontFamily.mono],
     },
     extend: {},
   },

@@ -1,0 +1,42 @@
+---
+import ContainerLayout from "@layouts/ContainerLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import TextContentLayout from "@layouts/TextContentLayout.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import ProseLayout from "@layouts/ProseLayout.astro";
+
+export const getStaticPaths = (async () => {
+  const blogCollection = await getCollection("blog");
+  return blogCollection.map((entry) => ({
+    params: {
+      article: entry.slug,
+    },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const project = Astro.props.entry;
+const { Content } = await project.render();
+const { title, date } = project.data;
+---
+
+<BaseLayout {title}>
+  <ContainerLayout>
+    <TextContentLayout>
+      <p class="mx-auto mb-4 text-gray-500">
+        {
+          new Date(date).toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })
+        }
+      </p>
+
+      <ProseLayout>
+        <Content />
+      </ProseLayout>
+    </TextContentLayout>
+  </ContainerLayout>
+</BaseLayout>

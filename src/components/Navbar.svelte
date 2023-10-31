@@ -9,9 +9,9 @@
   $: isScrolled = scrollPosition > 0;
 
   const navbarContent = [
+    { name: "📝 Articles", href: "/articles" },
     { name: "👨‍💻 Projects", href: "/programming" },
     { name: "📷 Photography", href: "/photography" },
-    // { name: "📝 Articles", href: "/articles" },
   ];
 
   let collapsed = true;
