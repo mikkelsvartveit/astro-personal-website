@@ -37,6 +37,10 @@ Another _really_ cool feature of Astro is the ability to use components from pre
 
 I utilized this feature for the navigation bar on the top of this site. It has a box shadow that shows and hides dynamically, and on mobile browsers it shows a menu button that expands a shelf of navigation links. Sure, I could have done this with vanilla JS, but I felt that using a Svelte component would be simpler and more maintainable. Besides, I already had this component ready from the old SvelteKit version of the website! I simply copied this file over, and it just worked right away, which was kind of a mind-blowing moment.
 
+<div class="flex justify-center">
+    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Migrating to Astro is delightful. I had a Svelte navbar with some interactivity, and I was afraid that I would have to recreate it from scratch. Nope. Literally copied the .svelte file over, imported it like any other component, and it just works. <a href="https://twitter.com/astrodotbuild?ref_src=twsrc%5Etfw">@astrodotbuild</a> <a href="https://twitter.com/hashtag/withastro?src=hash&amp;ref_src=twsrc%5Etfw">#withastro</a></p>&mdash; Mikkel Svartveit (@mikkelsvartveit) <a href="https://twitter.com/mikkelsvartveit/status/1715075728126161083?ref_src=twsrc%5Etfw">October 19, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
 ### View Transitions
 
 While the new View Transitions API is only supported in Chrome and other Chromium-based browsers for now, it is undeniably very cool. Astro utilizes this API in a really frictionless way. With just _one line_ of code, Astro will enable a 3KB large Javascript router that provides really sleek transitions between all your pages. And with a few more lines, you can achieve even more impressive transitions with elements persisting across pages. I’ve tried doing this on my photography page to medium success, yet the best demo I’ve seen for this is this [Spotify clone](https://spotify-astro-transitions.vercel.app) made by Igor M. Penaque. Go check it out!
