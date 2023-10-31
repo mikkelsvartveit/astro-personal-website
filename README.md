@@ -2,7 +2,7 @@
 
 My new personal website, powered by [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com).
 
-<img width="1452" alt="Screenshot" src="https://github.com/mikkelsvartveit/astro-personal-website/assets/30391413/762be353-f822-4bf5-a88b-2b6705511f7a">
+<img width="1270" alt="image" src="https://github.com/mikkelsvartveit/astro-personal-website/assets/30391413/94257af8-a69f-4775-ba40-9f27835291b5">
 
 ### Running development server
 
