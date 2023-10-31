@@ -17,11 +17,12 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const project = Astro.props.entry;
-const { Content } = await project.render();
-const { title, date } = project.data;
+const { Content, headings } = await project.render();
+const { date, intro } = project.data;
+const title = headings[0].text;
 ---
 
-<BaseLayout {title}>
+<BaseLayout {title} description={intro}>
   <ContainerLayout>
     <TextContentLayout>
       <p class="mx-auto mb-4 text-gray-500">

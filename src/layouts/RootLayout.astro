@@ -3,11 +3,12 @@ import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title?: string;
+  description?: string;
   hideScrollbar?: boolean;
   themeColor?: string;
 }
 
-const { title, hideScrollbar, themeColor } = Astro.props;
+const { title, description, hideScrollbar, themeColor } = Astro.props;
 
 const fullTitle = `${title ? title + " – " : ""}Mikkel Svartveit`;
 ---
@@ -21,7 +22,8 @@ const fullTitle = `${title ? title + " – " : ""}Mikkel Svartveit`;
     <title>{fullTitle}</title>
     <meta
       name="description"
-      content="Hi, I'm Mikkel! I am a Computer Science student from Norway and this is my playground. Here you will find some programming projects, and a small collection of photos I'm proud of."
+      content={description ??
+        "Hi, I'm Mikkel! I am a Computer Science student from Norway and this is my playground. Here you will find some programming projects, and a small collection of photos I'm proud of."}
     />
     <meta name="theme-color" content={themeColor ?? "#facc15"} />
     <ViewTransitions fallback="swap" />

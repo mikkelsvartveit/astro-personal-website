@@ -4,13 +4,14 @@ import RootLayout from "./RootLayout.astro";
 
 interface Props {
   title?: string;
+  description?: string;
   noStickyNavbar?: boolean;
 }
 
-const { title, noStickyNavbar } = Astro.props;
+const { title, description, noStickyNavbar } = Astro.props;
 ---
 
-<RootLayout {title}>
+<RootLayout {title} {description}>
   <Navbar
     client:load
     sticky={!noStickyNavbar}
