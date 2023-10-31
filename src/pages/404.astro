@@ -1,16 +1,23 @@
 ---
-import Paragraph from "../components/Paragraph.astro";
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import NotFoundImage from "../assets/images/404.jpeg";
 ---
 
 <BaseLayout title="Mikkel Svartveit">
   <section class="mx-auto max-w-4xl px-3 pb-8 pt-12 sm:px-6">
     <h1
-      class="mb-8 text-center font-serif text-3xl font-light tracking-wide text-gray-600 sm:text-4xl"
+      class="mb-8 text-center text-3xl font-serif font-light tracking-wide text-gray-600 sm:text-4xl"
     >
-      404 Not Found
+      PAgE nOT fOuNd
     </h1>
 
-    <Paragraph class="text-center">That's an error.</Paragraph>
+    <Image
+      src={NotFoundImage}
+      alt="404 Not Found"
+      width={800}
+      quality="mid"
+      class="mx-auto w-80 max-w-full rounded-lg shadow-xl"
+    />
   </section>
 </BaseLayout>
