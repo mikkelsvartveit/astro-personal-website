@@ -77,9 +77,15 @@
 
 {#if !collapsed}
   <div
+    role="presentation"
     transition:fade={{ duration: 100 }}
     class="fixed left-0 top-0 z-20 h-full w-full bg-black opacity-50"
+    on:click={() => (collapsed = true)}
+    on:keydown={(event) => {
+      if (event.key === "Escape") collapsed = true;
+    }}
   />
+
   <ul
     transition:slide={{ duration: 300, axis: "x" }}
     class="fixed right-0 top-0 z-30 block h-full bg-white p-4"
