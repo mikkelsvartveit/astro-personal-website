@@ -53,3 +53,7 @@ I have admittedly not checked out this tutorial. It’s most likely great. Still
 Despite this year’s somewhat disappointing update, Next.js is clearly evolving. Along with React Server Components, I can imagine a future where Next.js is an even stronger contender in the current realm of web development tools.
 
 While SvelteKit is still my go-to for the smoothest developer experience, I’m excited for what’s in line for Next. New developments in the React ecosystems are just too big to ignore. Once Turbopack is ready, partial prerendering is more widely available, and the server component paradigm settles a bit, Next.js offers a compelling argument for revisiting the world of React. Until then, I am sticking with Svelte.
+
+<div class="flex justify-center">
+    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Just did a microbenchmark of Next.js and SvelteKit by initializing skeleton projects for both.<br><br>- SvelteKit shipped 4x less JS to the browser<br><br>- SvelteKit’s dev server started up 4x faster<br><br>- SvelteKit’s production build was generated 4x faster<br><br>Don’t sleep on <a href="https://twitter.com/sveltejs?ref_src=twsrc%5Etfw">@sveltejs</a> <a href="https://t.co/cg4VVdxOU2">pic.twitter.com/cg4VVdxOU2</a></p>&mdash; Mikkel Svartveit (@mikkelsvartveit) <a href="https://twitter.com/mikkelsvartveit/status/1735198134333272119?ref_src=twsrc%5Etfw">December 14, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
