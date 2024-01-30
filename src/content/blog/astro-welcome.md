@@ -1,5 +1,5 @@
 ---
-intro: "How I built this website, why I picked the Astro framework, and the reason Tailwind is the best way to write CSS in 2023!"
+intro: "Thanks for checking out my brand new portfolio website! In this write-up, I’ll walk through the purpose of this website, explain the frameworks and tools I used to build and deploy it, as well as some challenges I discovered along the way. Let’s get started!"
 image: "@assets/images/rocket.png"
 date: 2023-10-30
 ---

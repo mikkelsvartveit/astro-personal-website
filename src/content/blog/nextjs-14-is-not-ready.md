@@ -1,10 +1,12 @@
 ---
-intro: "I'm intruiged by React Server Components, and Partial Prerendering is very clever. However, Next.js still has a long way to go."
+intro: "Next.js 14 has been out for over a month now, and I’ve had some time to read and reflect on the new features. I am still intrigued by the integration with React Server Components introduced in Next.js 13, and I genuinely believe that React and Next brings novel stuff to the table that you just can’t find in other frameworks right now. However, even after version 14, I still have the feeling that Next.js isn’t quite ready for prime time."
 image: "@assets/images/next14.png"
 date: 2023-12-12
 ---
 
 # Next.js 14 Is Really Cool. But It's Not Ready Yet.
+
+![Next.js Conf](@assets/images/nextjs-conf.jpeg)
 
 Next.js 14 has been out for over a month now, and I’ve had some time to read and reflect on the new features. I am still intrigued by the integration with React Server Components introduced in Next.js 13, and I genuinely believe that React and Next brings novel stuff to the table that you just can’t find in other frameworks right now. However, even after version 14, I still have the feeling that Next.js isn’t quite ready for prime time.
 
