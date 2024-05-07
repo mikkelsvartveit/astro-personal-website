@@ -1,5 +1,5 @@
 ---
-title: Snipcast.io
+title: Snipcast
 description: AI-generated summaries of any podcast, delivered in minutes.
 image: "@assets/images/snipcast.jpg"
 technologies: [Python, TypeScript, SvelteKit, Tailwind, OpenAI]
