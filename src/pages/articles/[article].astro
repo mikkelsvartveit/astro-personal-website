@@ -37,7 +37,9 @@ const title = headings[0].text;
           }
         </span>
 
-        <ArticleViewCounter articleSlug={project.slug} client:load />
+        <span class="px-2">⋅</span>
+
+        <ArticleViewCounter articleSlug={project.slug} client:only="svelte" />
       </p>
 
       <ProseLayout>
