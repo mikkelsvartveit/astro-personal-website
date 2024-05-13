@@ -13,4 +13,12 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  vite: {
+    ssr: {
+      external: ["node:async_hooks"],
+    },
+  },
+  experimental: {
+    actions: true,
+  },
 });

@@ -5,6 +5,7 @@ import TextContentLayout from "@layouts/TextContentLayout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import ProseLayout from "@layouts/ProseLayout.astro";
+import ArticleViewCounter from "@components/ArticleViewCounter.svelte";
 
 export const getStaticPaths = (async () => {
   const blogCollection = await getCollection("blog");
@@ -25,14 +26,18 @@ const title = headings[0].text;
 <BaseLayout {title} description={intro}>
   <ContainerLayout>
     <TextContentLayout>
-      <p class="mx-auto mb-4 text-gray-500">
-        {
-          new Date(date).toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          })
-        }
+      <p class="mx-auto mb-4 flex items-center text-gray-500">
+        <span>
+          {
+            new Date(date).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })
+          }
+        </span>
+
+        <ArticleViewCounter articleSlug={project.slug} client:only="svelte" />
       </p>
 
       <ProseLayout>
