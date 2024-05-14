@@ -9,7 +9,7 @@ import portraitImage from "@assets/images/portrait.jpg";
 
 const articles = await getCollection("blog");
 const latestArticle = articles.sort(
-  (p2, p1) => p1.data.date.getTime() - p2.data.date.getTime(),
+  (p2, p1) => p1.data.date.getTime() - p2.data.date.getTime()
 )[0];
 const latestArticleSlug = latestArticle.slug;
 const latestArticleTitle = (await latestArticle.render()).headings[0].text;
@@ -36,7 +36,7 @@ const latestArticleImage = latestArticle.data.image;
         Here you will find some
         <Link href="/programming">programming projects</Link>, a small
         <Link href="/photography">collection of photos</Link>
-         I'm proud of, and even a few
+        I'm proud of, and even a few
         <Link href="/articles">articles I've written</Link>.
       </Paragraph>
 
@@ -56,7 +56,7 @@ const latestArticleImage = latestArticle.data.image;
         src={portraitImage}
         width={384}
         densities={[1, 2]}
-        quality="mid"
+        quality="high"
         alt="Portrait of Mikkel"
         decoding="sync"
         loading="eager"
@@ -86,13 +86,17 @@ const latestArticleImage = latestArticle.data.image;
     <a
       class="underline underline-offset-1 hover:text-gray-400"
       href="https://astro.build/"
-      target="_blank">Astro</a
+      target="_blank"
     >
-     and
+      Astro
+    </a>
+    and
     <a
       class="underline underline-offset-1 hover:text-gray-400"
       href="https://tailwindcss.com/"
-      target="_blank">Tailwind CSS</a
-    >.
+      target="_blank"
+    >
+      Tailwind CSS
+    </a>.
   </p>
 </footer>
