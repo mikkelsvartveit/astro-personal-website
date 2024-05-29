@@ -4,6 +4,7 @@ import ContainerLayout from "@layouts/ContainerLayout.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
 import { Image } from "astro:assets";
+import HeadContent from "@components/HeadContent.astro";
 
 const photos = await Astro.glob("../../assets/photos/*");
 
@@ -21,7 +22,9 @@ export const getFileNameFromPath = (path: string) => {
 };
 ---
 
-<BaseLayout title="Photography" noStickyNavbar>
+<BaseLayout noStickyNavbar>
+  <HeadContent slot="head" title="Photography" />
+
   <ContainerLayout>
     <TextContentLayout>
       <h1

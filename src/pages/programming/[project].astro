@@ -5,6 +5,7 @@ import TextContentLayout from "@layouts/TextContentLayout.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import ProseLayout from "@layouts/ProseLayout.astro";
+import HeadContent from "@components/HeadContent.astro";
 
 export const getStaticPaths = (async () => {
   const programmingEntries = await getCollection("programming");
@@ -18,10 +19,13 @@ export const getStaticPaths = (async () => {
 
 const project = Astro.props.entry;
 const { Content } = await project.render();
-const { title, date, technologies, website, repository } = project.data;
+const { title, description, image, date, technologies, website, repository } =
+  project.data;
 ---
 
-<BaseLayout {title}>
+<BaseLayout>
+  <HeadContent slot="head" {title} {description} image={image.src} />
+
   <ContainerLayout>
     <TextContentLayout>
       <h1

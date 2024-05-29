@@ -1,23 +1,30 @@
 ---
 import Navbar from "@components/Navbar.svelte";
-import RootLayout from "./RootLayout.astro";
+import HeadContent from "@components/HeadContent.astro";
 
 interface Props {
-  title?: string;
-  description?: string;
   noStickyNavbar?: boolean;
 }
 
-const { title, description, noStickyNavbar } = Astro.props;
+const { noStickyNavbar } = Astro.props;
 ---
 
-<RootLayout {title} {description}>
-  <Navbar
-    client:load
-    sticky={!noStickyNavbar}
-    currentPath={Astro.url.pathname}
-  />
-  <main class="pb-6">
-    <slot />
-  </main>
-</RootLayout>
+<html lang="en">
+  <head>
+    <slot name="head">
+      <HeadContent />
+    </slot>
+  </head>
+
+  <body class="overflow-y-scroll bg-gray-50">
+    <Navbar
+      client:load
+      sticky={!noStickyNavbar}
+      currentPath={Astro.url.pathname}
+    />
+
+    <main class="pb-6">
+      <slot />
+    </main>
+  </body>
+</html>

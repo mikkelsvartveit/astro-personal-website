@@ -5,11 +5,14 @@ import ContainerLayout from "@layouts/ContainerLayout.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
 import { getCollection } from "astro:content";
+import Head from "@components/HeadContent.astro";
 
 const articles = await getCollection("blog");
 ---
 
-<BaseLayout title="Articles">
+<BaseLayout>
+  <Head slot="head" title="Articles" />
+
   <ContainerLayout>
     <TextContentLayout>
       <h1

@@ -6,6 +6,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import ProseLayout from "@layouts/ProseLayout.astro";
 import ArticleViewCounter from "@components/ArticleViewCounter.svelte";
+import HeadContent from "@components/HeadContent.astro";
 
 export const getStaticPaths = (async () => {
   const blogCollection = await getCollection("blog");
@@ -19,11 +20,13 @@ export const getStaticPaths = (async () => {
 
 const project = Astro.props.entry;
 const { Content, headings } = await project.render();
-const { date, intro } = project.data;
+const { date, intro, image } = project.data;
 const title = headings[0].text;
 ---
 
-<BaseLayout {title} description={intro}>
+<BaseLayout>
+  <HeadContent slot="head" {title} description={intro} image={image.src} />
+
   <ContainerLayout>
     <TextContentLayout>
       <p class="mx-auto mb-4 flex items-center text-gray-500">
