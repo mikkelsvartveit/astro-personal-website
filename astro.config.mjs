@@ -22,4 +22,5 @@ export default defineConfig({
   experimental: {
     actions: true,
   },
+  site: "https://mikkelsvartveit.com",
 });
