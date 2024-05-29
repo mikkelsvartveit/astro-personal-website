@@ -40,6 +40,8 @@ const articles = await getCollection("blog");
                   <Image
                     src={image}
                     alt={title}
+                    width={320}
+                    densities={[1, 2]}
                     class="col-span-1 h-48 object-cover sm:h-full"
                   />
 

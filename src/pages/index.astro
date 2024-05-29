@@ -72,7 +72,13 @@ const latestArticleImage = latestArticle.data.image;
     <div
       class="flex items-center overflow-hidden rounded-lg bg-white underline-offset-4 shadow transition hover:underline hover:shadow-md"
     >
-      <Image src={latestArticleImage} alt="" class="h-16 w-24 object-cover" />
+      <Image
+        src={latestArticleImage}
+        alt=""
+        class="h-16 w-24 object-cover"
+        width={100}
+        densities={[1, 2]}
+      />
       <h3 class="mx-3 line-clamp-2 font-serif text-lg leading-snug">
         {latestArticleTitle}
       </h3>
