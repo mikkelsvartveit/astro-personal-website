@@ -1,12 +1,6 @@
 ---
 import Navbar from "@components/Navbar.svelte";
 import HeadContent from "@components/HeadContent.astro";
-
-interface Props {
-  noStickyNavbar?: boolean;
-}
-
-const { noStickyNavbar } = Astro.props;
 ---
 
 <html lang="en">
@@ -19,7 +13,6 @@ const { noStickyNavbar } = Astro.props;
   <body class="overflow-y-scroll bg-gray-50">
     <Navbar
       client:load
-      sticky={!noStickyNavbar}
       currentPath={Astro.url.pathname}
     />
 
