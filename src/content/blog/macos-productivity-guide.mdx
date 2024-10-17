@@ -67,7 +67,7 @@ Luckily, there are apps that improve the window management situation on macOS dr
 
 Both of these apps basically copy the window snapping that’s been included in Windows since the Vista days. But more importantly, it also gives you keyboard shortcuts for placing the window in almost any layout imaginable.
 
-The ones I use the most frequenty is `Cmd + Enter` for maximizing a window, and `Cmd + Arrow key` to snap the window to one half of the screen. Now, opening two apps side by side is as easy as opening the first app, `Cmd + Left arrow`, opening the second app, and `Cmd + Right arrow`. This approach also avoids the full-screen mode and all its infuriating traits altogether!
+The ones I use the most frequenty is `Ctrl + Option + Enter` for maximizing a window, and `Ctrl + Option + Arrow key` to snap the window to one half of the screen. Now, opening two apps side by side is as easy as opening the first app, `Ctrl + Option + Left arrow`, opening the second app, and `Ctrl + Option + Right arrow`. This approach also avoids the full-screen mode and all its infuriating traits altogether!
 
 Here is a screenshot of Magnet with all its layout options and keyboard shortcuts:
 
@@ -77,8 +77,8 @@ Here is a screenshot of Magnet with all its layout options and keyboard shortcut
 
 If you took my earlier advice of enabling Dock autohide, you might notice a problem: whenever you try to access your hidden Dock, it doesn't show up right away. This animation is infuriatingly slow: it takes a good second after your mouse touches the bottom of the screen until the Dock finally shows up in all its glory. Luckily, there is a **hidden setting** to change this behavior. Open the Terminal app and run this command:
 
-```go
-defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -float 0.3; defaults write com.apple.dock showhidden -bool true; killall Dock
+```bash
+defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -float 0.3; killall Dock
 ```
 
 Now your auto-hiding Dock should be nice and snappy:
