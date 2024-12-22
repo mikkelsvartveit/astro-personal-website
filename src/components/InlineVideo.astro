@@ -2,6 +2,5 @@
 const { src, width, height } = Astro.props;
 ---
 
-<video width={width} height={height} autoplay loop muted playsinline>
-  <source src={src} type="video/mp4" />
+<video src={src} width={width} height={height} autoplay loop muted playsinline>
 </video>
