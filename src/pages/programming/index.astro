@@ -33,9 +33,9 @@ const projects = await getCollection("programming");
       {
         projects
           .sort((p2, p1) => p1.data.date.getTime() - p2.data.date.getTime())
-          .map(({ data, slug }) => (
+          .map(({ data, id }) => (
             <a
-              href={`/programming/${slug}`}
+              href={`/programming/${id}`}
               class="mx-auto overflow-hidden rounded-lg bg-white pb-8 shadow-md duration-100 hover:-translate-y-1 hover:shadow-lg"
             >
               <Image

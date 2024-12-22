@@ -7,7 +7,7 @@ import cloudflare from "@astrojs/cloudflare";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), svelte(), mdx()],
-  output: "hybrid",
+  output: "static",
   adapter: cloudflare({
     imageService: "compile",
     platformProxy: {
@@ -18,9 +18,6 @@ export default defineConfig({
     ssr: {
       external: ["node:async_hooks"],
     },
-  },
-  experimental: {
-    actions: true,
   },
   site: "https://mikkelsvartveit.com",
 });

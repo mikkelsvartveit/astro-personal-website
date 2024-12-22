@@ -2,10 +2,9 @@
 import type { GetStaticPaths } from "astro";
 import { Image } from "astro:assets";
 import { getFileNameFromPath } from "./index.astro";
-import RootLayout from "@layouts/RootLayout.astro";
 import HeadContent from "@components/HeadContent.astro";
 
-export const getStaticPaths = (async () => {
+export const getStaticPaths: GetStaticPaths = (async () => {
   const photos = await Astro.glob("../../assets/photos/*");
 
   return photos.map((photo: any) => ({
@@ -18,7 +17,7 @@ export const getStaticPaths = (async () => {
   }));
 }) satisfies GetStaticPaths;
 
-const { photo } = Astro.props;
+const photo = Astro.props.photo as any;
 ---
 
 <html lang="en">

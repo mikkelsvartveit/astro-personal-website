@@ -6,19 +6,20 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import ProseLayout from "@layouts/ProseLayout.astro";
 import HeadContent from "@components/HeadContent.astro";
+import { render } from "astro:content";
 
 export const getStaticPaths = (async () => {
   const programmingEntries = await getCollection("programming");
   return programmingEntries.map((entry) => ({
     params: {
-      project: entry.slug,
+      project: entry.id,
     },
     props: { entry },
   }));
 }) satisfies GetStaticPaths;
 
 const project = Astro.props.entry;
-const { Content } = await project.render();
+const { Content } = await render(project);
 const { title, description, image, date, technologies, website, repository } =
   project.data;
 ---

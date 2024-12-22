@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Link from "@components/Link.astro";
@@ -11,8 +11,8 @@ const articles = await getCollection("blog");
 const latestArticle = articles.sort(
   (p2, p1) => p1.data.date.getTime() - p2.data.date.getTime()
 )[0];
-const latestArticleSlug = latestArticle.slug;
-const latestArticleTitle = (await latestArticle.render()).headings[0].text;
+const latestArticleSlug = latestArticle.id;
+const latestArticleTitle = (await render(latestArticle)).headings[0].text;
 const latestArticleImage = latestArticle.data.image;
 ---
 

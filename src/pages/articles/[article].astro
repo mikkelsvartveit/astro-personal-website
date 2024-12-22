@@ -1,26 +1,26 @@
 ---
+import { getCollection, render } from "astro:content";
 import ContainerLayout from "@layouts/ContainerLayout.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
-import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
 import ProseLayout from "@layouts/ProseLayout.astro";
-import ArticleViewCounter from "@components/ArticleViewCounter.svelte";
+import ArticleViewCounter from "@components/ArticleViewCounter.astro";
 import HeadContent from "@components/HeadContent.astro";
+import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
   const blogCollection = await getCollection("blog");
   return blogCollection.map((entry) => ({
     params: {
-      article: entry.slug,
+      article: entry.id,
     },
     props: { entry },
   }));
 }) satisfies GetStaticPaths;
 
-const project = Astro.props.entry;
-const { Content, headings } = await project.render();
-const { date, intro, image } = project.data;
+const blogPost = Astro.props.entry;
+const { Content, headings } = await render(blogPost);
+const { date, intro, image } = blogPost.data;
 const title = headings[0].text;
 ---
 
@@ -42,7 +42,7 @@ const title = headings[0].text;
 
         <span class="px-2">⋅</span>
 
-        <ArticleViewCounter articleSlug={project.slug} client:only="svelte" />
+        <ArticleViewCounter server:defer articleSlug={blogPost.id} />
       </p>
 
       <ProseLayout>
