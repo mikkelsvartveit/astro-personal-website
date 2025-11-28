@@ -3,7 +3,7 @@ import ContainerLayout from "@layouts/ContainerLayout.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
 import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import ProseLayout from "@layouts/ProseLayout.astro";
 import HeadContent from "@components/HeadContent.astro";
 
@@ -17,7 +17,11 @@ export const getStaticPaths = (async () => {
   }));
 }) satisfies GetStaticPaths;
 
-const project = Astro.props.entry;
+type Props = {
+  entry: CollectionEntry<"programming">;
+};
+
+const { entry: project } = Astro.props;
 const { Content } = await project.render();
 const { title, description, image, date, technologies, website, repository } =
   project.data;

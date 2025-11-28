@@ -1,6 +1,7 @@
 ---
 import Navbar from "@components/Navbar.svelte";
 import HeadContent from "@components/HeadContent.astro";
+import "../styles/global.css";
 ---
 
 <html lang="en">
@@ -11,10 +12,7 @@ import HeadContent from "@components/HeadContent.astro";
   </head>
 
   <body class="overflow-y-scroll bg-gray-50">
-    <Navbar
-      client:load
-      currentPath={Astro.url.pathname}
-    />
+    <Navbar client:load currentPath={Astro.url.pathname} />
 
     <main class="pb-6">
       <slot />

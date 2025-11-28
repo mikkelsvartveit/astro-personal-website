@@ -4,11 +4,19 @@ import ContainerLayout from "@layouts/ContainerLayout.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import HeadContent from "@components/HeadContent.astro";
 
-const photos = await Astro.glob("../../assets/photos/*");
+interface PhotoModule {
+  default: ImageMetadata;
+}
 
-const sortFiles = (a: any, b: any) => {
+const photoModules = import.meta.glob<PhotoModule>("../../assets/photos/*", {
+  eager: true,
+});
+const photos = Object.values(photoModules);
+
+const sortFiles = (a: PhotoModule, b: PhotoModule) => {
   const aNum = Number(a.default.src.match(/\d+/));
   const bNum = Number(b.default.src.match(/\d+/));
 

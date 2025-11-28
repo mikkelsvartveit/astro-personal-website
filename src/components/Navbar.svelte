@@ -1,8 +1,8 @@
 <script lang="ts">
   import { slide, fade } from "svelte/transition";
 
-  export let currentPath: string;
-  $: currentPathTrimmed = currentPath.replace(/\/+$/, "");
+  let { currentPath }: { currentPath: string } = $props();
+  const currentPathTrimmed = $derived(currentPath.replace(/\/+$/, ""));
 
   const navbarContent = [
     { name: "📝 Articles", href: "/articles" },
@@ -10,7 +10,7 @@
     { name: "📷 Photography", href: "/photography" },
   ];
 
-  let collapsed = true;
+  let collapsed = $state(true);
 </script>
 
 <header>
@@ -44,7 +44,7 @@
     <button
       aria-label="Open menu"
       class="md:hidden"
-      on:click={() => (collapsed = !collapsed)}
+      onclick={() => (collapsed = !collapsed)}
     >
       <svg
         class="h-10 w-10 stroke-yellow-500"
@@ -70,20 +70,20 @@
   <div
     role="presentation"
     transition:fade={{ duration: 100 }}
-    class="fixed left-0 top-0 z-20 h-full w-full bg-black opacity-50"
-    on:click={() => (collapsed = true)}
-    on:keydown={(event) => {
+    class="fixed top-0 left-0 z-20 h-full w-full bg-black opacity-50"
+    onclick={() => (collapsed = true)}
+    onkeydown={(event) => {
       if (event.key === "Escape") collapsed = true;
     }}
-  />
+  ></div>
 
   <ul
     transition:slide={{ duration: 300, axis: "x" }}
-    class="fixed right-0 top-0 z-30 block h-full bg-white p-4"
+    class="fixed top-0 right-0 z-30 block h-full bg-white p-4"
   >
     <button
       aria-label="Close menu"
-      on:click={() => (collapsed = true)}
+      onclick={() => (collapsed = true)}
       class="ml-auto block h-10 w-10"
     >
       <svg
@@ -101,11 +101,11 @@
     </button>
 
     {#each navbarContent as { name, href }}
-      <li class="my-6 ml-2 mr-16">
+      <li class="my-6 mr-16 ml-2">
         <a
           {href}
-          on:click={() => (collapsed = true)}
-          class="whitespace-nowrap text-lg tracking-wide text-gray-600 decoration-yellow-400 decoration-2 underline-offset-8"
+          onclick={() => (collapsed = true)}
+          class="text-lg tracking-wide whitespace-nowrap text-gray-600 decoration-yellow-400 decoration-2 underline-offset-8"
           class:underline={href === currentPathTrimmed}
         >
           {name}

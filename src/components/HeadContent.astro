@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title?: string;
@@ -50,4 +50,4 @@ const fullImageUrl = origin + (image ?? "/favicon.png");
   src="https://umami.mikkel.cloud/script.js"
   data-website-id="1caff5b4-223d-47c3-8c5e-a5002d73b993"></script>
 
-<ViewTransitions fallback="none" />
+<ClientRouter fallback="none" />

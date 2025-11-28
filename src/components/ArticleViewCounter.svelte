@@ -4,14 +4,16 @@
   import { expoIn } from "svelte/easing";
   import { fade } from "svelte/transition";
 
-  export let articleSlug: string;
+  let { articleSlug }: { articleSlug: string } = $props();
 
-  let counter: number | null = null;
+  let counter = $state<number | null>(null);
 
   onMount(async () => {
-    const readCount = await actions.registerView({ articleSlug });
+    const { data, error } = await actions.registerView({ articleSlug });
 
-    counter = readCount;
+    if (!error && data !== undefined) {
+      counter = data;
+    }
   });
 </script>
 

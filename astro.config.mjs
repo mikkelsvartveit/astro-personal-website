@@ -1,13 +1,13 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import cloudflare from "@astrojs/cloudflare";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), svelte(), mdx()],
-  output: "hybrid",
+  integrations: [svelte(), mdx()],
+  output: "static",
   adapter: cloudflare({
     imageService: "compile",
     platformProxy: {
@@ -15,12 +15,10 @@ export default defineConfig({
     },
   }),
   vite: {
+    plugins: [tailwindcss()],
     ssr: {
       external: ["node:async_hooks"],
     },
-  },
-  experimental: {
-    actions: true,
   },
   site: "https://mikkelsvartveit.com",
 });
