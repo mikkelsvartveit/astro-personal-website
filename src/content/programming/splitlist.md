@@ -3,7 +3,7 @@ title: Splitlist
 description: The fastest way to create and share to-do lists and more.
 image: "@assets/images/splitlist.png"
 technologies: [JavaScript, PHP]
-website: https://list.misva.me
+website: https://list.mikkel.cloud
 repository: https://github.com/mikkelsvartveit/splitlist
 date: 2020-05-11
 ---

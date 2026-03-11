@@ -3,7 +3,7 @@ title: Ninjavote
 description: Instantly create simple polls in your group chats.
 image: "@assets/images/ninjavote.jpg"
 technologies: [TypeScript, SvelteKit, FeathersJS]
-website: https://ninjavote.com
+website: https://vote.mikkel.cloud
 repository: https://github.com/mikkelsvartveit/ninjavote
 date: 2023-04-17
 ---
