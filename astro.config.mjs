@@ -10,9 +10,6 @@ export default defineConfig({
   output: "static",
   adapter: cloudflare({
     imageService: "compile",
-    platformProxy: {
-      enabled: true,
-    },
   }),
   vite: {
     plugins: [tailwindcss()],
@@ -21,4 +18,9 @@ export default defineConfig({
     },
   },
   site: "https://mikkelsvartveit.com",
+  redirects: {
+    "/meet": "https://cal.com/misva/",
+    "/cv": "/files/resume.pdf",
+    "/resume": "/files/resume.pdf",
+  },
 });

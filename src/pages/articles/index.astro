@@ -4,7 +4,7 @@ import Paragraph from "@components/Paragraph.astro";
 import ContainerLayout from "@layouts/ContainerLayout.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Head from "@components/HeadContent.astro";
 
 const articles = await getCollection("blog");
@@ -31,9 +31,9 @@ const articles = await getCollection("blog");
           articles
             .sort((p2, p1) => p1.data.date.getTime() - p2.data.date.getTime())
             .map(async (article) => {
-              const { slug, data } = article;
+              const { id: slug, data } = article;
               const { image, intro } = data;
-              const { headings } = await article.render();
+              const { headings } = await render(article);
               const title = headings[0].text;
               return (
                 <a

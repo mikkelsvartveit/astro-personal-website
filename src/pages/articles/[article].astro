@@ -2,7 +2,7 @@
 import ContainerLayout from "@layouts/ContainerLayout.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import ProseLayout from "@layouts/ProseLayout.astro";
 import ArticleViewCounter from "@components/ArticleViewCounter.svelte";
 import HeadContent from "@components/HeadContent.astro";
@@ -10,7 +10,7 @@ import HeadContent from "@components/HeadContent.astro";
 export async function getStaticPaths() {
   const blogCollection = await getCollection("blog");
   return blogCollection.map((entry) => ({
-    params: { article: entry.slug },
+    params: { article: entry.id },
     props: { entry },
   }));
 }
@@ -20,7 +20,7 @@ type Props = {
 };
 
 const { entry: project } = Astro.props;
-const { Content, headings } = await project.render();
+const { Content, headings } = await render(project);
 const { date, intro, image } = project.data;
 const title = headings[0].text;
 ---
@@ -43,7 +43,7 @@ const title = headings[0].text;
 
         <span class="px-2">⋅</span>
 
-        <ArticleViewCounter articleSlug={project.slug} client:only="svelte" />
+        <ArticleViewCounter articleSlug={project.id} client:only="svelte" />
       </p>
 
       <ProseLayout>

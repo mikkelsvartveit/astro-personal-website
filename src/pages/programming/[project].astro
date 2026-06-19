@@ -3,7 +3,7 @@ import ContainerLayout from "@layouts/ContainerLayout.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TextContentLayout from "@layouts/TextContentLayout.astro";
 import type { GetStaticPaths } from "astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import ProseLayout from "@layouts/ProseLayout.astro";
 import HeadContent from "@components/HeadContent.astro";
 
@@ -11,7 +11,7 @@ export const getStaticPaths = (async () => {
   const programmingEntries = await getCollection("programming");
   return programmingEntries.map((entry) => ({
     params: {
-      project: entry.slug,
+      project: entry.id,
     },
     props: { entry },
   }));
@@ -22,7 +22,7 @@ type Props = {
 };
 
 const { entry: project } = Astro.props;
-const { Content } = await project.render();
+const { Content } = await render(project);
 const { title, description, image, date, technologies, website, repository } =
   project.data;
 ---

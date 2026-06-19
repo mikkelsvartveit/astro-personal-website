@@ -5,7 +5,14 @@ import twitterIcon from "@assets/icons/twitter-icon.png";
 import instagramIcon from "@assets/icons/instagram-icon.png";
 import { Image } from "astro:assets";
 
-const socialMedia = [
+interface IconImage {
+  src: string;
+  format?: string;
+  width?: number;
+  height?: number;
+}
+
+const socialMedia: { name: string; icon: IconImage; url: string }[] = [
   {
     name: "GitHub",
     icon: githubIcon,
@@ -32,13 +39,11 @@ const socialMedia = [
 {
   socialMedia.map(({ name, icon, url }) => (
     <a href={url} target="_blank">
-      <Image
-        src={icon}
-        alt={name}
-        class="inline-block h-8 w-8"
-        decoding="sync"
-        loading="eager"
-      />
+      {
+        icon.format === "svg"
+          ? <img src={icon.src} alt={name} class="inline-block h-8 w-8" />
+          : <Image src={icon} alt={name} class="inline-block h-8 w-8" decoding="sync" loading="eager" />
+      }
     </a>
   ))
 }

@@ -6,6 +6,7 @@ import TextContentLayout from "@layouts/TextContentLayout.astro";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import HeadContent from "@components/HeadContent.astro";
+import { getFileNameFromPath } from "@lib/photos";
 
 interface PhotoModule {
   default: ImageMetadata;
@@ -23,11 +24,6 @@ const sortFiles = (a: PhotoModule, b: PhotoModule) => {
   return bNum - aNum;
 };
 
-export const getFileNameFromPath = (path: string) => {
-  const parts = path.split("/");
-  const fileName = parts[parts.length - 1].split("?")[0];
-  return fileName.split(".")[0];
-};
 ---
 
 <BaseLayout>
